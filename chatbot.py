@@ -14,6 +14,9 @@ conversaSalva.write(data)
 while True:
     pergunta = input()
     resposta = robo.get_response(pergunta)
-    print(resposta)
-    conversaSalva.write(" ' "+pergunta+" ' "+",")
-    conversaSalva.write(" ' "+str(resposta)+" ' "+",")
+    if float(resposta.confidence) > 0.5:
+        print(resposta)
+        conversaSalva.write(" ' " + pergunta + " ' " + ",")
+        conversaSalva.write(" ' " + str(resposta) + " ' " + ",")
+    else:
+        print("Nao sei")
